@@ -1,0 +1,35 @@
+{% extends 'default.html' %}
+
+{% block title %}Profile {{user.username}} {% endblock %}
+
+
+
+{% block content %}
+    <img src="/media/images/user.png" alt="...">
+    <h3>Личный кабинет пользователя </h3>
+    <br>
+    <h5>User name: {{user.username}}</h5>
+    <h5>E-mail: {{user.email}}</h5>
+
+    <br><br>
+    <a class="btn btn-dark" href="{% url 'account_logout' %}" role="button">Выйти из аккаунта</a>
+
+    <br><br><br>
+    {% if auth == False %}
+        <h5>Для завершения регистрации, введите код подтверждения,<br>
+            высланный на указанную Вами электронную почту:</h5><br>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input class="btn btn-dark" type="submit" value="Проверить">
+        </form>
+        {% if code_not_correct %}
+            <a style="font-size: 16px; color:red">{{ code_not_correct }}</a><br>
+            <a href="{% url 'auth_code' %}" style="font-size: 16px; color:blue">Выслать новый код</a>
+        {% endif %}
+    {% else %}
+        <h5>Регистрация успешно завершена</h5>
+        <a style="font-size: 16px; color:green"> Вы можете размещать новые объявления и делать отклики</a><br>
+    {% endif %}
+
+{% endblock %}

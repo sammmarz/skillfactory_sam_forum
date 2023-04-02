@@ -1,0 +1,27 @@
+{% extends 'default.html' %}
+{% block title %}Delete{% endblock title %}
+
+{% block content %}
+    <br>
+    <h3>Удаление объявления:</h3><br>
+
+    {% autoescape off %}
+    <h2>{{ post.title }}</h2>
+    <span>{{ post.text }}<br></span>
+    {% if post.article_image %}
+        <a href="{{post.article_image.url}}">Прикрепленный файл</a>	
+    {% endautoescape %}
+    <hr>
+
+    <span>дата публикации: {{ post.dateCreation|date:'d-M-Y f' }}, ({{ post.author }})</span><br>
+    <span>Категория: {{ post.get_category_display }}</span>
+
+    <br><br>
+
+    <h4>Подтвердите удаление объявления:</h4>
+    <form method="POST">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-dark" style="background: red" value="подтвердить"></form>
+    <br>
+    
+{% endblock content %}

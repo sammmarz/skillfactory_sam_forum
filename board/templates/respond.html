@@ -1,0 +1,17 @@
+{% extends 'default.html' %}
+
+{% block title %}Respond{% endblock title %}
+{% load static %}
+
+{% block content %}
+    <br>
+    <h3> {{ user.username }}, введите текст вашего отклика:</h3><br>
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+
+        {{ form.as_p }}
+		
+	<br>
+		<input class="btn btn-dark" type="submit" value="Сохранить">
+	</form><br>
+{% endblock content %}

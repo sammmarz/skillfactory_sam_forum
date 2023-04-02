@@ -1,0 +1,14 @@
+{% extends 'default.html' %}
+{% block title %}Create post{% endblock title %}
+{% load static %}
+
+{% block content %}
+    <br>
+    <h3>Новое объявление</h3><br>
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+		<input class="btn btn-dark" type="submit" value="Сохранить">
+	</form><br>
+{% endblock content %}
