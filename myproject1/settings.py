@@ -108,7 +108,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 EMAIL_HOST = 'smtp.yandex.ru' # адрес сервера Яндекс-почты для всех один и тот же
 EMAIL_PORT = 465 # порт smtp сервера тоже одинаковый
 EMAIL_HOST_USER = 'petrovskill23'
-EMAIL_HOST_PASSWORD = 'fpznpsfdssetiydr' # пароль от почты
+EMAIL_HOST_PASSWORD = '' # пароль от почты
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = 'petrovskill23@yandex.ru'
 
